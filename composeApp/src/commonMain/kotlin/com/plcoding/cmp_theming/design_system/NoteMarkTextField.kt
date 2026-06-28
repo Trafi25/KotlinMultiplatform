@@ -2,6 +2,7 @@ package com.plcoding.cmp_theming.design_system
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -45,7 +46,8 @@ fun NoteMarkTextField(
         OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
-            visualTransformation = if (isInputSecret)
+            modifier = Modifier.fillMaxWidth(),
+            visualTransformation = if (isPasswordVisible)
                 PasswordVisualTransformation(mask = '*')
             else VisualTransformation.None,
             colors = OutlinedTextFieldDefaults.colors(
@@ -72,12 +74,12 @@ fun NoteMarkTextField(
                         when {
                              isPasswordVisible -> {
                                  Icon(
-                                     Icons.Default.Visibility,
+                                     Icons.Default.VisibilityOff,
                                      contentDescription = "Hide password")
                              }
                             !isPasswordVisible -> {
                                 Icon(
-                                    Icons.Default.VisibilityOff,
+                                    Icons.Default.Visibility,
                                     contentDescription = "Show password")
                             }
                         }

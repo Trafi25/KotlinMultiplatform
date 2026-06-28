@@ -20,6 +20,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import cmp_theming.composeapp.generated.resources.Res
 import cmp_theming.composeapp.generated.resources.compose_multiplatform
+import com.plcoding.cmp_theming.login.LoginScreen
 import com.plcoding.cmp_theming.theme.NoteMarkTheme
 import com.plcoding.cmp_theming.theme.extraColor
 
@@ -27,30 +28,6 @@ import com.plcoding.cmp_theming.theme.extraColor
 @Preview
 fun App() {
     NoteMarkTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .safeContentPadding()
-                .fillMaxSize()
-                .clip(MaterialTheme.shapes.extraSmall)
-                .background(
-                    MaterialTheme.colorScheme.extraColor
-                ),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text(
-                    text = "Click me!",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
-        }
+        LoginScreen()
     }
 }
